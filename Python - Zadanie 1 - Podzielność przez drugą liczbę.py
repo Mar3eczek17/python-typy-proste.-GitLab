@@ -1,5 +1,5 @@
-def fff(a, b):
+def podzielna(a, b):
     return a/b
 
-c = fff(40, 5)
+c = podzielna(40, 10)
 print(bool(c))
