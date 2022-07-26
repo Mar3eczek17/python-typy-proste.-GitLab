@@ -1,5 +1,8 @@
 def podzielna(a, b):
-    return a/b
+    if a % b == 0: 
+        return True
+    else: 
+        return False 
 
-c = podzielna(40, 10)
-print(bool(c))
+c = podzielna(40, 4)
+print(c)
