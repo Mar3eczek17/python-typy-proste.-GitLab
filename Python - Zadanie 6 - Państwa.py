@@ -23,18 +23,6 @@ Panstwo4 = {'nazwa': 'Anglia',
 # państwa, powierzchni, liczbie mieszkańców, PKB per capita (PPP). Napisz funkcję,
 # która dla listy słowników będzie wypisywać listę państw uszeregowanych według:
 
-# Arkadiusz Modzelewski
-# Z gęstością jest ok, ale zarówno gęstość jak i sortowanie powinno odbywać
-# się w funkcji. Potrzebna jest tylko i wyłącznie jedna funkcja, która będzie pobierać listę
-# państw, o których dane są w słownikach. Potem wewnątrz tej funkcji dopisujesz do słownika
-# gęstość do każdego państwa i potem sortujesz na podstawie argumentu, który przekażesz do
-# funkcji np pozadkowanie(lista_panstw, "powierzchnia") - takie wywolanie funkcji powinno
-# posortować słowniki po powierzchni i zwrócić listę państwa z samymi nazwami, ale juz
-# posortowanymi.
-
-# Piotr Glinka
-# napisałeś kilka funkcji porządkujących, każda dla innego klucza - napisz funkcję która
-# ten klucz przekaże jako parametr 🙂
 
 # poprawka
 def panstwa(lista_slownikow: list, arg1: str) -> list:
@@ -46,17 +34,13 @@ def panstwa(lista_slownikow: list, arg1: str) -> list:
     '''
     zaludnienie = []
     powierzchnia = []
-    gestosc_zaludnienia = []
     [zaludnienie.append(x['liczba_mieszkancow']) for x in lista_slownikow]
     [powierzchnia.append(x['powierzchnia']) for x in lista_slownikow]
 
-    for i in range(len(zaludnienie)):
-        gestosc_zaludnienia.append(zaludnienie[i] / powierzchnia[i])
-
-    Panstwo1['gestosc_zaludnienia'] = round(gestosc_zaludnienia[0], 2)
-    Panstwo2['gestosc_zaludnienia'] = round(gestosc_zaludnienia[1], 2)
-    Panstwo3['gestosc_zaludnienia'] = round(gestosc_zaludnienia[2], 2)
-    Panstwo4['gestosc_zaludnienia'] = round(gestosc_zaludnienia[3], 2)
+    # Inny sposób na dodanie gęstości zaludnienia...
+    for panstwo in lista_slownikow:
+        panstwo['gestosc_zaludnienia'] = round(panstwo['liczba_mieszkancow'] / panstwo['powierzchnia'], 2)
+    print(lista_slownikow)
 
     newlist = sorted(lista_slownikow, key=lambda d: d[arg1])
 
@@ -75,10 +59,10 @@ a = lista_slownikow
 #       liczby ludności
 # c = panstwa(a, arg1='liczba_mieszkancow')
 #       gęstości zaludnienia
-# d = panstwa(a, arg1='gestosc_zaludnienia')
+d = panstwa(a, arg1='gestosc_zaludnienia')
 #       PKB per capita (PPP)
-e = panstwa(a, arg1='PKB_per_capita_PPP')
+# e = panstwa(a, arg1='PKB_per_capita_PPP')
 # print(b)
 # print(c)
-# print(d)
-print(e)
+print(d)
+# print(e)
