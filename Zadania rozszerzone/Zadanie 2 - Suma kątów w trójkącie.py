@@ -16,6 +16,7 @@ class Trojkat(object):
             return False
 
 
+# Driver code
 if __name__ == "__main__":
     b = Trojkat(arg1=100, arg2=30, arg3=70)
     print(b.sprawdz_katy().__str__())
