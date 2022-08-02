@@ -5,22 +5,19 @@ import math
 
 
 class LiniaProsta(object):
-    def __init__(self, pkt_a, pkt_b):
-        self.pkt_a = pkt_a
-        self.pkt_b = pkt_b
-        self.pkt_c = [pkt_b[0], pkt_a[1]]
+    def __init__(self, krotka):
+        self.krotka = krotka
 
     def line_length(self):
         # Długość odcinka w układzie współrzędnych
         # Długość odcinka o końcach w punktach A=(x1,y1) oraz B=(x2,y2) wyraża się wzorem:
-        length_of_the_segment = math.sqrt(pow((self.pkt_b[0] - self.pkt_a[0]), 2)
-                                          + pow((self.pkt_b[1] - self.pkt_a[1]), 2))
+        length_of_the_segment = math.sqrt(pow((self.krotka[2] - self.krotka[0]), 2)
+                                          + pow((self.krotka[3] - self.krotka[1]), 2))
         return round(length_of_the_segment, 2)
 
 
 # Driver code
-d = LiniaProsta([-3, -2], [-11, 4])
-print(d.pkt_a)
-print(d.pkt_b)
-print(f"Długość odcinka o końcach w punktach {d.pkt_a} oraz {d.pkt_b} wynosi: {d.line_length()}")
-print(d.line_length())
+thistuple = (-3, -2, -11, 4)
+d = LiniaProsta(thistuple)
+print(f"Długość odcinka o końcach w punktach {d.krotka[0], d.krotka[1]} oraz {d.krotka[2], d.krotka[3]} wynosi: "
+      f"{d.line_length()}")
